@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/rakesh-paulraj/wastemanagementsystem/issues"
   },
-  "homepage": "https://github.com/rakesh-paulraj/wastemanagementsystem#readme"
+  "homepage": "https://github.com/rakesh-paulraj/wastemanagementsystem#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
 }
