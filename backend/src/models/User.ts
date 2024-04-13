@@ -33,9 +33,9 @@ User.init(
 
     },{
         sequelize,
-      modelName: "employeedetails",
+      modelName: "User",
       timestamps: false,
       underscored: true,
-      tableName: "employeedetails"
+      tableName: "user"
     }) ;
-    User.belongsTo(Area, { foreignKey: 'area_id' });
+User.belongsTo(Area, { foreignKey: 'area_id' })
