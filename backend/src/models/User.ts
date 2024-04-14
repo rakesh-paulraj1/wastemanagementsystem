@@ -2,7 +2,9 @@ import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../db";
 import { Area } from "./Area";
 
-export class User extends Model {}
+export class User extends Model {
+    id: any;
+}
 User.init(
     {
         id: {

@@ -9,6 +9,7 @@ import { waste_collection } from "./models/Waste_collection";
 import {waste_produced } from  "./models/Waste_produced";
 import { Vehicle } from "./models/Vehicle";
 import AdminRouter  from "./routes/Adminrouter";
+import UserRouter from "./routes/Userrouter";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ Vehicle.sync()
   .catch((err) => console.error("Unable to sync  all models:", err));
    
   app.use(AdminRouter);
+  app.use(UserRouter);
 
 
 app.listen(port, () => {
