@@ -5,7 +5,7 @@ import { Complaints } from '../models/Complaints';
 import { sign,verify } from 'jsonwebtoken';
 import { waste_produced } from '../models/Waste_produced';
 import { JWT_SECRET } from '../config';
-import Op from 'sequelize/types/operators';
+import {Op} from 'sequelize';
 import sequelize from 'sequelize';
 import { Area } from '../models/Area';
 
