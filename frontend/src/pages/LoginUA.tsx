@@ -10,6 +10,6 @@ export const Login = () => {
             <AdminLogincard />
         </div>
         </div>
-        
+       
     )
 }

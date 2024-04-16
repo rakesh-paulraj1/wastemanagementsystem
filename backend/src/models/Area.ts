@@ -12,10 +12,6 @@ Area.init(
       area_name: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      area_families: {
-        type: DataTypes.INTEGER,
-        allowNull: false
       }
     },
     {

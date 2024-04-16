@@ -33,7 +33,7 @@ export const  AdminLogincard = () => {
     }
     
     return <div className="h-screen flex justify-center items-center">
-        <div  className="h-[390px] w-[360px] bg-neutral-950 rounded-lg shadow-slate-800 shadow-[0_0_10px_2px_rgb(148,163,184)] flex flex-col items-center p-4">
+        <div  className="h-[390px] w-[360px] bg-grey-900 rounded-lg shadow-slate-800 shadow-[0_0_10px_2px_rgb(148,163,184)] flex flex-col items-center p-4">
             <div>
                 <div className="px-10">
                     <div className="font-bold text-4xl p-4 text-neutral-400">
@@ -55,7 +55,7 @@ export const  AdminLogincard = () => {
                             password: e.target.value
                         })
                     }} />
-                    <button onClick={signinhandler} type="button" className="mt-8 h-9 w-full animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 my-8 ">Login</button>
+                    <button onClick={signinhandler} type="button" className="select-none  w-full mt-8 rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Login</button>
                    
                 </div>
                 
@@ -75,7 +75,7 @@ interface LabelledInputType {
 
 function LabelledInput({label , placeholder, onChange, type }: LabelledInputType) {
     return <div>
-        <label className="block mb-2 text-sm text-white font-semibold pt-4">{label}</label>
+        <label className="font-bold mb-2 mt-2 text-black-700">{label}</label>
         <input onChange={onChange} type={type || "text"} id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={placeholder} required />
     </div>
 }

@@ -23,13 +23,12 @@ constructor()  {}
                 })
             } else {
                 const jwt = await sign({ id: admin.id},JWT_SECRET!);
-                res.json({ token: jwt });
-               res.status(200).json({
+               res.status(200).json({jwt,
                     message: "Login Successful"
                 })
             }
         } catch (err) {
-            console.error(err);
+            console.error(err,"error");
             res.status(500).json({ error: 'Internal server error' });
         }
     }
@@ -61,19 +60,20 @@ public async createuser(req:Request,res:Response): Promise<void>{
     try{
         const body=req.body;
         const user=await User.create({
-            data:{
+            
                 username:body.username,
                 password:body.password,
                 emailid:body.emailid,
                 area_id:body.area_id,
                 address:body.address
-            }
+            
 
         });
         res.status(201).json({
             message:"User created successfully",
         })
     }catch(err){
+        console.log(err);
         res.status(500).json({
             err:"Unable to create user"
         })
@@ -212,7 +212,12 @@ public async waste_byuser(req:Request,res:Response):Promise<void>{
             }],
             where: whereCondition,
             group: ['w_date']
+
+        
         });
+        res.json({
+            totalWasteByDate
+        })
     }catch(error){
         console.error('Error fetching waste collection:', error);
         res.status(500).json({
@@ -221,8 +226,6 @@ public async waste_byuser(req:Request,res:Response):Promise<void>{
         });
     }
 }
-
-
 }
 
 
