@@ -35,7 +35,7 @@ import {
             <ListItemPrefix>
               <ShoppingBagIcon className="h-5 w-5" />
             </ListItemPrefix>
-            E-Commerce
+            <Link to={"/adduser"}>Add new User</Link> 
           </ListItem>
           <ListItem>
             <ListItemPrefix>
