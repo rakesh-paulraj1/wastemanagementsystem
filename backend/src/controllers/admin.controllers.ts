@@ -94,6 +94,20 @@ public async getcomplaints(req:Request,res:Response):Promise<void> {
     }
 }
 //------------------------------------------//
+public async getalluser(req:Request,res:Response):Promise<void>{
+    try{
+        const users=await User.findAll();
+        res.status(200).json(users);
+        console.log("The user list is provided ")
+    }
+    catch(e){
+        console.log(e);
+        res.status(500).json({
+            message:"Cannot fetch user details"
+        })
+    }
+}
+//------------------------------------------//
 public async getcomplaint(req:Request,res:Response):Promise<void>{
     try{
         const id=req.params.id;
