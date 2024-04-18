@@ -9,7 +9,7 @@ interface Complaint {
     area_id: number
 }
 
-export const ComplaintsTable = () => {
+export const Areatable = () => {
     const [data, setData] = useState<Complaint[]>([]);
 
     useEffect(() => {

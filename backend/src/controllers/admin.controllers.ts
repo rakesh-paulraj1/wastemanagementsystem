@@ -98,7 +98,7 @@ public async getalluser(req:Request,res:Response):Promise<void>{
     try{
         const users=await User.findAll();
         res.status(200).json(users);
-        console.log("The user list is provided ")
+        
     }
     catch(e){
         console.log(e);
@@ -106,6 +106,13 @@ public async getalluser(req:Request,res:Response):Promise<void>{
             message:"Cannot fetch user details"
         })
     }
+}
+//------------------------------------------//
+public async getareas(req:Request,re:Response):Promise<void>{
+    try{
+
+    }
+    catch 
 }
 //------------------------------------------//
 public async getcomplaint(req:Request,res:Response):Promise<void>{

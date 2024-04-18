@@ -9,6 +9,7 @@ router.use('/admin',adminController.adminmiddleware);
 router.post("/adminadd",adminController.createuser);
 router.get("/getalluser",adminController.getalluser);
 router.get("/admincomplaints",adminController.getcomplaints);
+
 router.get("/admincomplaint/:id",adminController.getcomplaint);
 router.put("/admincomplaint/:id",adminController.updatecomplaint);
 router.get("/adminwasteproducedarea/:id",adminController.waste_byarea);
