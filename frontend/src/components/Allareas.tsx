@@ -3,11 +3,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 interface Complaint {
-   area_name:string
+    user_id: number,
+    complaint_status: string,
+    id: number,
     area_id: number
 }
 
-export const Areatable = () => {
+export const ComplaintsTable = () => {
     const [data, setData] = useState<Complaint[]>([]);
 
     useEffect(() => {
@@ -35,19 +37,22 @@ export const Areatable = () => {
                 <table className="w-full text-left table-auto min-w-max rounded-md overflow-hidden">
                     <thead className="bg-gray-200">
                         <tr>
-                           
+                            <th className="py-2 border border-gray-300">ID</th>
+                            <th className="py-2 border border-gray-300">User ID</th>
+                            <th className="py-2 border border-gray-300">Complaint Status</th>
                             <th className="py-2 border border-gray-300">Area ID</th>
-                            <th className="py-2 border border-gray-300">Area name</th>
+                            <th className="py-2 border border-gray-300">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((i) => (
-                            <tr key={i.area_id}>
-                                
-                              
-                                <td className="py-2 border border-gray-300" style={{ padding: "8px" }}>{i.area_name}</td>
+                            <tr key={i.id}>
+                                <td className="py-2 border border-gray-300" style={{ padding: "8px" }}>{i.id}</td>
+                                <td className="py-2 border border-gray-300" style={{ padding: "8px" }}>{i.user_id}</td>
+                                <td className="py-2 border border-gray-300" style={{ padding: "8px" }}>{i.complaint_status}</td>
+                                <td className="py-2 border border-gray-300" style={{ padding: "8px" }}>{i.area_id}</td>
                                 <td className="py-2 border border-gray-300" style={{ padding: "8px" }}>
-                                    <Link to={`/wastebyarea/${i.area_id}`}>
+                                    <Link to={`/getareadetails/${i.id}`}>
                                         <button className="bg-blue-500 text-white px-2 py-1 rounded-md mr-2">
                                             Get Details
                                         </button>

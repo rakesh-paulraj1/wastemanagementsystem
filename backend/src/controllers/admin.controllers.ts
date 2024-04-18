@@ -108,12 +108,18 @@ public async getalluser(req:Request,res:Response):Promise<void>{
     }
 }
 //------------------------------------------//
-public async getareas(req:Request,re:Response):Promise<void>{
-    try{
-
+    public async getareas(req: Request, res: Response): Promise<void> {
+        try {
+            const areas = await Area.findAll();
+            res.status(200).json(areas);
+        }
+        catch (error) {
+            console.log(error);
+            res.status(500).json({
+                message: "Cannot fetch Areas"
+            });
+        }
     }
-    catch 
-}
 //------------------------------------------//
 public async getcomplaint(req:Request,res:Response):Promise<void>{
     try{

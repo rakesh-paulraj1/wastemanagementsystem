@@ -13,6 +13,7 @@ import {
     UserCircleIcon,
     Cog6ToothIcon,
     InboxIcon,
+    MapIcon,
   } from "@heroicons/react/24/solid";
   import { Link } from "react-router-dom";
    
@@ -48,16 +49,11 @@ import {
           </ListItem>
           <ListItem>
             <ListItemPrefix>
-              <UserCircleIcon className="h-5 w-5" />
+              <MapIcon className="h-5 w-5" />
             </ListItemPrefix>
-            Profile
+            <Link to={"/allareas"}>Areas</Link>
           </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Settings
-          </ListItem>
+          
           
         </List>
       </Card>
