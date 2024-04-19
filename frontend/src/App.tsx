@@ -2,11 +2,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Login } from './pages/LoginUA'
-import {AdminDashboard} from './pages/AdminDashboard';
-import {Adduser1} from './pages/Adduser1.tsx';
-import { Complaints } from './pages/AllComplaints.tsx';
-import { AllAreas } from './pages/AllAreas.tsx';
+import { Login } from './commonpages/LoginUA.tsx'
+import {AdminDashboard} from './adminpages/AdminDashboard.tsx';
+import {Adduser} from './adminpages/Adduser.tsx';
+import { Complaints } from './adminpages/AllComplaints.tsx';
+import { AllAreas } from './adminpages/AllAreas.tsx';
+import {Userdashboard} from './userpages/Userdashboard.tsx'
 
 const App: React.FC = () => {
   return (
@@ -14,9 +15,11 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/admindashboard" element={<AdminDashboard />} />
-      <Route path="/adduser" element={<Adduser1 />} />
+      <Route path="/adduser" element={<Adduser/>} />
       <Route path="allcomplaints" element={<Complaints/>}/>
       <Route path="allareas" element={<AllAreas/>}/>
+      <Route path="/userdashboard" element={<Userdashboard/>}/>
+      
     </Routes>
   </BrowserRouter>
   );

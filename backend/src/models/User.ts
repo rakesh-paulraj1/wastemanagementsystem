@@ -3,7 +3,10 @@ import { sequelize } from "../db";
 import { Area } from "./Area";
 
 export class User extends Model {
-    id: any;
+    public id!: number;
+    public username!: string;
+    public password!: string;
+    public area_id!: number; 
 }
 User.init(
     {

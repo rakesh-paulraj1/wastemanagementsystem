@@ -10,7 +10,9 @@ const [Logout,setLogout]=useState(false);
 
     
    function signoutHandler(){
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
+    localStorage.removeItem('area_id');
+    localStorage.removeItem('user_id');
     setLogout(true);
         
    }

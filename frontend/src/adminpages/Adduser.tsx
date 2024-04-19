@@ -1,7 +1,7 @@
 import { AdduserForm } from "../components/AdduserForm";
 import {AdminSidebar} from "../components/AdminSidebar";
 import  {Appbar} from "../components/Appbar";
-export const Adduser1 = () => {
+export const Adduser = () => {
     return(<div>
         <Appbar content="Add user" />
         <div className="flex flex-col md:flex-row">

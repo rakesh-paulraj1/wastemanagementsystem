@@ -22,8 +22,13 @@ export const  UserLogincard = () => {
         try {
             const response = await axios.post(`http://localhost:3000/userlogin`, postInputs);
             const jwt = response.data.jwt;
+            const area_id=response.data.area_id;
+            const user_id=response.data.user_id;
             localStorage.setItem("token", jwt);
-            navigate("/userdashboard ");
+            localStorage.setItem("user_id",user_id);
+            localStorage.setItem("area_id",area_id);
+
+            navigate("/userdashboard");
             alert("You have successfully signed in");
             } catch (err:any) {
                 console.log(err.response.data);

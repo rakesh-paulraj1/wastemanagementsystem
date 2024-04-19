@@ -24,7 +24,7 @@ constructor()  {}
             } else {
                 const jwt = await sign({ id: admin.id},JWT_SECRET!);
                res.status(200).json({jwt,
-                    message: "Login Successful"
+                    message: " Admin Logged in Successful"
                 })
             }
         } catch (err) {
