@@ -8,6 +8,7 @@ import {Adduser} from './adminpages/Adduser.tsx';
 import { Complaints } from './adminpages/AllComplaints.tsx';
 import { AllAreas } from './adminpages/AllAreas.tsx';
 import {Userdashboard} from './userpages/Userdashboard.tsx'
+import { UserComplaint } from './userpages/UserComplaint.tsx';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
       <Route path="allcomplaints" element={<Complaints/>}/>
       <Route path="allareas" element={<AllAreas/>}/>
       <Route path="/userdashboard" element={<Userdashboard/>}/>
+      <Route path="/addcomplaint" element={<UserComplaint/>}/>
       
     </Routes>
   </BrowserRouter>

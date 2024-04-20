@@ -9,10 +9,10 @@ import {
   } from "@material-tailwind/react";
   import {
     PresentationChartBarIcon,
-    ShoppingBagIcon,
-   
+    
+   DocumentIcon,
     InboxIcon,
-    MapIcon,
+    
   } from "@heroicons/react/24/solid";
   import { Link } from "react-router-dom";
    
@@ -29,11 +29,11 @@ import {
             <ListItemPrefix>
               <PresentationChartBarIcon className="h-5 w-5" />
             </ListItemPrefix>
-           <Link to={"/addweight"}>Dashboard</Link> 
+           <Link to={"/userdashboard"}>Dashboard</Link> 
           </ListItem>
           <ListItem>
             <ListItemPrefix>
-              <ShoppingBagIcon className="h-5 w-5" />
+              <DocumentIcon className="h-5 w-5" />
             </ListItemPrefix>
             <Link to={"/addcomplaint"}>Add Complaint</Link> 
           </ListItem>
