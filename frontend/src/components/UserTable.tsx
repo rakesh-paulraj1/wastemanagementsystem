@@ -55,7 +55,7 @@ export const UserTable = () => {
                 <td className="py-2 border  border-gray-300"style={{ padding: "8px" }}>{i.area_id}</td>
                 <td className="py-2 border  border-gray-300"style={{ padding: "8px" }}>
                   <Link to={`/wastebyuser/${i.id}`}>
-                    <button  className="bg-blue-500 text-white px-2 py-1 rounded-md mr-2">
+                    <button  className=" mt-8 rounded-lg bg-gradient-to-tr from-gray-900 to-green-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ">
                       Get Details
                     </button>
                   </Link>

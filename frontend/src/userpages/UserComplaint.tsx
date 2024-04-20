@@ -4,10 +4,10 @@ import { Complaintsform } from "../components/Complaintsform";
 export const UserComplaint=()=>{
     return (
         <div>
-        <Appbar content="User Dashboard" />
-        <div className="flex flex-col md:flex-row">
-        <UserSidebar />
-        <div className="mt-8 mx-auto max-w-lg">
+        <Appbar content="User Complaint" />
+        <div className="flex w-flex md:flex-row">
+       <UserSidebar/>
+        <div className="max-w-screen-lg pl-5 ml-auto w-3/4 ">
         <Complaintsform/>
         </div>
         </div>

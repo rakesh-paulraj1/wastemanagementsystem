@@ -41,7 +41,7 @@ import {
             <ListItemPrefix>
               <InboxIcon className="h-5 w-5" />
             </ListItemPrefix>
-            <Link to={"/allcomplaints"}>See Complaint status </Link> 
+            <Link to={"/seecomplaints"}>See Complaint status </Link> 
             <ListItemSuffix>
              
             </ListItemSuffix>

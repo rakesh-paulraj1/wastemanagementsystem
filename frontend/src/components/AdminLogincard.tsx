@@ -42,7 +42,7 @@ export const  AdminLogincard = () => {
                     
                     
                 </div>
-                <LabelledInput label={"Username"} type={"text"} placeholder={"Your Username"} onChange={(e) => {
+                <LabelledInput  label={"Username"} type={"text"} placeholder={"Your Username"} onChange={(e) => {
                         setPostInputs({
                             ...postInputs,
                             username: e.target.value
@@ -55,7 +55,7 @@ export const  AdminLogincard = () => {
                             password: e.target.value
                         })
                     }} />
-                    <button onClick={signinhandler} type="button" className="select-none  w-full mt-8 rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Login</button>
+                    <button onClick={signinhandler} type="button" className=" mt-6 select-none rounded-lg bg-gradient-to-tr from-gray-900 to-green-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-900/5 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Login</button>
                    
                 </div>
                 
