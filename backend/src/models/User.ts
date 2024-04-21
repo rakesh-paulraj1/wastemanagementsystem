@@ -1,6 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../db";
 import { Area } from "./Area";
+import { waste_produced } from "./Waste_produced";
 
 export class User extends Model {
     public id!: number;

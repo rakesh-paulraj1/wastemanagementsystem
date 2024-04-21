@@ -66,8 +66,6 @@ public async createuser(req:Request,res:Response): Promise<void>{
                 emailid:body.emailid,
                 area_id:body.area_id,
                 address:body.address
-            
-
         });
         res.status(201).json({
             message:"User created successfully",
@@ -83,7 +81,7 @@ public async createuser(req:Request,res:Response): Promise<void>{
 //------------------------------------------//
 public async getcomplaints(req:Request,res:Response):Promise<void> {
     try{
-        const complaints=await Complaints.findAll({attributes:['user_id','complaint_status','id','area_id']});
+        const complaints=await Complaints.findAll({attributes:['user_id','complaint_status','id','area_id','title']});
         res.status(200).json({
             complaints
         })
@@ -134,7 +132,8 @@ public async getcomplaint(req:Request,res:Response):Promise<void>{
         res.status(200).json({
             complaint
         })
-    }catch{
+    }catch(error){
+        console.log(error)
         res.status(500).json({
             err:"Unable to get complaint"
         })
@@ -144,9 +143,9 @@ public async getcomplaint(req:Request,res:Response):Promise<void>{
 public async updatecomplaint(req:Request,res:Response):Promise<void>{
     try{
         const id=req.params.id;
-        const complaint_stat=req.body.complaint_status;
+        const complaint_stats=req.body.complaint_status;
         const complaints=await Complaints.update({
-            complaint_status:complaint_stat
+            complaint_status:complaint_stats
         },{where:{id:id}});
         res.status(200).json({
             message:"Complaint updated successfully"
@@ -164,24 +163,21 @@ public async waste_byarea(req:Request,res:Response):Promise<void>{
         const startDate = req.query.startDate as string | undefined;
         const endDate = req.query.endDate as string | undefined;
 
-        
         const whereCondition: any = { area_id: areaId };
         if (startDate && endDate) {
-            whereCondition.createdAt = {
+            whereCondition.w_date = {
                 [Op.between]: [new Date(startDate), new Date(endDate)]
             };
         }
 
-        
-        const wastebyall = await waste_produced.findAll({
-            where: whereCondition,
-            order: [['total_weight', 'ASC']] 
-        });
-
-        
         const totalWeightAreaWise = await waste_produced.findAll({
             attributes: ['area_id', [sequelize.fn('SUM', sequelize.col('total_weight')), 'total_weight']],
             where: whereCondition,
+            include: [{
+                model: Area,
+                attributes: ['area_name'], 
+                required: true
+            }],
             group: ['area_id']
         });
         const bioWeightAreaWise = await waste_produced.findAll({
@@ -194,38 +190,52 @@ public async waste_byarea(req:Request,res:Response):Promise<void>{
             where: whereCondition,
             group: ['area_id']
         });
-
-        res.status(200).json({
-            wastebyall,
-            totalWeightAreaWise,
-            nonbioWeightAreaWise,
-            bioWeightAreaWise            
+        interface wasteData {
+            [areaName: string]: {
+                totalWeight: number;
+                bioWeight: number;
+                nonBioWeight: number;
+                area_id:number
+                areaName:string
+            }; 
+        }
+        const wasteData: wasteData = {}; 
+        totalWeightAreaWise.forEach((item, index) => {
+            const areaId = item.area_id;
+            const areaName = item.Area?.area_name || 'Unknown'; 
+            wasteData[areaName] = { 
+                totalWeight: item.total_weight || 0,
+                bioWeight: bioWeightAreaWise[index].bio_weight || 0,
+                nonBioWeight: nonbioWeightAreaWise[index].non_bio_weight || 0,
+                area_id:areaId,
+                areaName:areaName
+            };
         });
+       console.log(wasteData);
+        res.json(wasteData);
     } catch (error) {
         console.error('Error fetching waste collection:', error);
         res.status(500).json({
-            error: 'Internal server error',
-            
+            error: 'Internal server error'
         });
     }
 
 }
-
-//--------------------------//
+//----------------------------------------------//
 public async waste_byuser(req:Request,res:Response):Promise<void>{
     try {
         const userId = req.params.id;
         const startDate = req.query.startDate as string | undefined;
         const endDate = req.query.endDate as string | undefined;
          
-        const whereCondition: any = { userId: userId };
+        const whereCondition: any = { user_id: userId };
         if (startDate && endDate) {
-            whereCondition.createdAt = {
+            whereCondition.w_date = {
                 [Op.between]: [new Date(startDate), new Date(endDate)]
             };
         }
 
-        const totalWasteByDate = await waste_produced.findOne({
+        const totalWasteByDate = await waste_produced.findAll({
             attributes: [
                 'w_date',
                 [sequelize.fn('SUM', sequelize.col('total_weight')), 'total_weight'],

@@ -16,9 +16,12 @@ Complaints.init({
     user_id:{
         type: DataTypes.INTEGER,
         allowNull: false
-    },message:{
+    },description:{
         type: DataTypes.STRING,
         allowNull: false
+    },title:{
+        type:DataTypes.STRING,
+        allowNull:false
     },
     complaint_status:{
         type: DataTypes.STRING,

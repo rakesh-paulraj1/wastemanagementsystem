@@ -36,7 +36,7 @@ export const  AdminLogincard = () => {
         <div  className="h-[390px] w-[360px] bg-grey-900 rounded-lg shadow-slate-800 shadow-[0_0_10px_2px_rgb(148,163,184)] flex flex-col items-center p-4">
             <div>
                 <div className="px-10">
-                    <div className="font-bold text-4xl p-4 text-neutral-400">
+                    <div className="font-bold text-4xl p-4 text-green-900">
                         Admin
                     </div>
                     

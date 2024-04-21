@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import axios from "axios";
+
 import { Link } from "react-router-dom";
 import { Dialog } from "primereact/dialog";
+import { useReactToPrint } from "react-to-print";
 interface Complaint {
     user_id: number,
     complaint_status: string,
@@ -17,7 +19,16 @@ export const ComplaintsTable = () => {
     useEffect(() => {
         getComplaints();
     }, []);
+   
+   
+    const pdfgenerator=useRef();
+  const generatepdf=useReactToPrint({
+content: ()=>pdfgenerator.current,
+  documentTitle: "All complaints report",
+  onAfterPrint: () => alert("Report Printed Successfully")
+  });
 
+  
     function getComplaints() {
         axios.get(`http://localhost:3000/admincomplaints`, {
             headers: {
@@ -50,6 +61,9 @@ export const ComplaintsTable = () => {
   >
     Area-List
   </button>
+  <button onClick={generatepdf} className="select-none mt-8 rounded-lg bg-gradient-to-tr from-gray-900 to-green-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                                            Generate Pdf
+                                        </button>
 </div>
             <Dialog header="Area and ID" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
         <p className="m-0 flex flex-col">
@@ -62,7 +76,10 @@ export const ComplaintsTable = () => {
     </ul>
         </p>
     </Dialog>
-            <section className="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+    
+                                        <div ref={pdfgenerator}>
+                                            <span className="font-bold 0 bg-clip-text text-transparent text-xl md:text-4xl mr-5 "style={{ color: 'green' }} > All Complaints</span>
+            <section  className="relative flex flex-col w-full h-full text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
                 <table className="w-full text-left table-auto min-w-max rounded-md overflow-hidden">
                     <thead className="bg-gray-200">
                         <tr>
@@ -94,6 +111,7 @@ export const ComplaintsTable = () => {
                     </tbody>
                 </table>
             </section>
+            </div>
         </div>
     );
 }

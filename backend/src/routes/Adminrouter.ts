@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AdminController } from "../controllers/admin.controllers";
 
 
+
 const router=Router();
 const adminController=new AdminController();
 router.post('/adminlogin',adminController.loginadmin);

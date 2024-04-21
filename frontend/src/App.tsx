@@ -12,6 +12,7 @@ import { UserComplaint } from './userpages/UserComplaint.tsx';
 import { UserComplaints } from './userpages/UserComplaints.tsx';
 import { Updatecomplaints } from './adminpages/Updatecomplaints.tsx';
 import { Areawisewaste } from './adminpages/Areaswisewaste.tsx';
+import { Userwisewaste } from './adminpages/Userwisewaste.tsx';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const App: React.FC = () => {
       <Route path="/seecomplaints" element={<UserComplaints/>}/>
       <Route path="admincomplaint/:id" element={<Updatecomplaints/>}/>
       <Route path="/wastebyarea/:id" element={<Areawisewaste/>}/>
+      <Route path="/wastebyuser/:id" element={<Userwisewaste/>}/>
     </Routes>
   </BrowserRouter>
   );

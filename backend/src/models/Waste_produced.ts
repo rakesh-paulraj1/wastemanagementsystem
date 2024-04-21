@@ -1,12 +1,16 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../db";
 import { User } from "./User";
+import {Area} from "./Area";
 
 
 export class waste_produced  extends Model {
     total_weight: number | undefined;
     bio_weight: number | undefined;
     non_bio_weight: number | undefined;
+    area_id: any;
+    Area: any;
+    area_name!: string;
     
 
 }
@@ -23,19 +27,32 @@ waste_produced.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    user_id:{
+    user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: User,
+            key: 'id'
+        }
+    },
+    area_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Area,
+            key: 'area_id'
+        }
     },
     total_weight:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue:0,
     }
 },
 {
   sequelize,
   modelName: "waste_produced",
-  timestamps: true,
+  timestamps: false,
   underscored: true,
   tableName: "waste_produced",
   hooks: {
@@ -45,3 +62,5 @@ waste_produced.init({
     }
 }
 })
+waste_produced.belongsTo(Area, { foreignKey: 'area_id' });
+waste_produced.belongsTo(User, { foreignKey: 'user_id' });

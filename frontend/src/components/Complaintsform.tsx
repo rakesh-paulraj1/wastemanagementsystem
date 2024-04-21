@@ -31,6 +31,7 @@ export const Complaintsform =()=>{
     }, []);
     async function addcomplaint() {
         try {
+            console.log(postInputs);
             await axios.post(`http://localhost:3000/createcomplaint`, postInputs, {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -93,10 +94,11 @@ export const Complaintsform =()=>{
                          description:(e.target.value)
                     })
                 }} type="text" className=" mt-4 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Description of the Complaint" />
-                
-                <button onClick={addcomplaint} type="submit" className="mt-4 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                <div className="mt-3">
+                <button onClick={addcomplaint} type="submit" className="select-none rounded-lg bg-gradient-to-tr from-gray-900 to-green-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-900/5 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     Send Complaint 
                 </button>
+                </div>
             </div>
         </div>
         </div>

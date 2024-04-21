@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 interface User {
   id: number;
@@ -9,8 +10,15 @@ interface User {
   area_id:number;
 }
 
+
+
 export const UserTable = () => {
-   
+  const pdfgenerator=useRef();
+  const generatepdf=useReactToPrint({
+  content: ()=>pdfgenerator.current,
+  documentTitle: "All users report",
+  onAfterPrint: () => alert("Report Printed Successfully")
+  });
   useEffect(() => {
     getallUsers(); // Call the function to fetch user details
   }, []);
@@ -33,7 +41,14 @@ export const UserTable = () => {
   }
 
   return (
-    <div className="mt-4">
+    <div className="mt-4"> 
+ <div class="flex justify-end pl-4">
+  <button  onClick={generatepdf} class="select-none mt-8 rounded-lg bg-gradient-to-tr from-gray-900 to-green-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Generate pdf</button>
+</div>
+
+      <div ref={pdfgenerator}>
+      <span className="font-bold 0 bg-clip-text text-transparent text-xl md:text-4xl mr-5 "style={{ color: 'green' }} > All Users</span>
+
       <section className="relative flex flex-col w-full h-full  text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
         <table className="w-full text-left table-auto min-w-max rounded-md overflow-hidden">
           <thead className="bg-gray-200">
@@ -65,6 +80,7 @@ export const UserTable = () => {
           </tbody>
         </table>
       </section>
+      </div>
     </div>
   );
 };
