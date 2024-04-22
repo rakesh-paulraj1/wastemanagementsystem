@@ -18,7 +18,7 @@ import {
    
   export function UserSidebar() {
     return (
-      <Card className=" fixed h-[calc(100vh-2rem)] w-full max-w-[20rem]   py-4 shadow-xl shadow-blue-gray-900/5">
+      <Card className=" fixed h-[calc(100vh-2rem)] w-full max-w-[20rem]   py-4 shadow-xl shadow-blue-gray-900/5 left-0">
         <div className="mb-2 p-4">
           <Typography variant="h5" color="blue-gray">
             

@@ -61,8 +61,9 @@ const wasteDataArray: WasteData[] = Object.keys(data).map((key) => ({
                                         </button>
                                         <button onClick={fetchData} type="button" className="select-none   mt-4 rounded-lg bg-gradient-to-tr from-gray-900 to-green-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ">Fetch data</button>
                                         </div>
-                                        <span className="font-bold 0 bg-clip-text text-transparent text-xl md:text-4xl mr-5 "style={{ color: 'green' }} > Waste by Area details</span>
                                         <div ref={pdfgenerator}> 
+                                        <span className="font-bold 0 bg-clip-text text-transparent text-xl md:text-4xl mr-5 "style={{ color: 'green' }} > Waste by Area details</span>
+                                        
              <div className="mt-4">
              <div className="flex items-center space-x-4">
   <label htmlFor="startDate" className="text-gray-700">From:</label>

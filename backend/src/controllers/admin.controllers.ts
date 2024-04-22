@@ -162,14 +162,21 @@ public async waste_byarea(req:Request,res:Response):Promise<void>{
         const areaId = req.params.id;
         const startDate = req.query.startDate as string | undefined;
         const endDate = req.query.endDate as string | undefined;
-
+        interface wasteData {
+            [areaName: string]: {
+                totalWeight: number;
+                bioWeight: number;
+                nonBioWeight: number;
+                area_id:number
+                areaName:string
+            }; 
+        }
         const whereCondition: any = { area_id: areaId };
         if (startDate && endDate) {
             whereCondition.w_date = {
                 [Op.between]: [new Date(startDate), new Date(endDate)]
             };
         }
-
         const totalWeightAreaWise = await waste_produced.findAll({
             attributes: ['area_id', [sequelize.fn('SUM', sequelize.col('total_weight')), 'total_weight']],
             where: whereCondition,
@@ -190,15 +197,7 @@ public async waste_byarea(req:Request,res:Response):Promise<void>{
             where: whereCondition,
             group: ['area_id']
         });
-        interface wasteData {
-            [areaName: string]: {
-                totalWeight: number;
-                bioWeight: number;
-                nonBioWeight: number;
-                area_id:number
-                areaName:string
-            }; 
-        }
+      
         const wasteData: wasteData = {}; 
         totalWeightAreaWise.forEach((item, index) => {
             const areaId = item.area_id;
