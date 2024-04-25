@@ -7,7 +7,7 @@ Area.init(
       area_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement:true
       },
       area_name: {
         type: DataTypes.STRING,
