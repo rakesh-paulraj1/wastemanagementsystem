@@ -31,7 +31,7 @@ export const  UserLogincard = () => {
             navigate("/userdashboard");
             alert("You have successfully signed in");
             } catch (err:any) {
-                console.log(err.response.data);
+                console.log(err);
                 alert("username or password is incorrect");
             }
            
