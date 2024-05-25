@@ -1,1 +1,3 @@
-![Screenshot 2024-04-22 094405](https://github.com/rakesh-paulraj/wastemanagementsystem/assets/127669387/3838b7b6-08b2-4054-b094-6dc1158d30f4)
+
+https://github.com/rakesh-paulraj1/wastemanagementsystem/assets/168630658/3f19aedd-2a23-41fb-ae6e-4e3cf0e03a9a
+
